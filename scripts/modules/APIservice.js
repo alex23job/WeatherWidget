@@ -12,8 +12,25 @@ export const fetchWeatherAPI = async (city) => {
 
         return { success: true, data};
     }
-    catch (err) 
+    catch (error) 
     {
-        return { success: false, err};
+        return { success: false, error};
+    }
+}
+
+export const fetchForecastAPI = async (city) => {
+    try
+    {
+        const response = await fetch(`${API_URL}forecast?q=${city}&appid=${API_KEY}&lang=ru`);
+
+        const data = await response.json();
+
+        //console.log(`data = `, data);
+
+        return { success: true, data};
+    }
+    catch (error) 
+    {
+        return { success: false, error};
     }
 }
