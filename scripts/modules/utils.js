@@ -46,7 +46,8 @@ export const getForecastData = (data) => {
     const myData = data.list.filter((item) => 
     {
         const dt = new Date(item.dt_txt);
-        return dt.getDate() > curDate.getDate() && (dt.getHours() === 12 || dt.getHours() === 3);
+        //return dt.getDate() > curDate.getDate() && (dt.getHours() === 12 || dt.getHours() === 3);
+        return (dt.getHours() === 12 || dt.getHours() === 3);
     });
 
     let maxTemp = 20;
