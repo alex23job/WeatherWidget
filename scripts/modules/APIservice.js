@@ -27,10 +27,30 @@ export const fetchForecastAPI = async (city) => {
 
         //console.log(`data = `, data);
 
-        return { success: true, data};
+        return { success: true, data };
     }
     catch (error) 
     {
-        return { success: false, error};
+        return { success: false, error };
+    }
+}
+
+export const getCity = async () => {
+    const url = 'https://ipapi.co/city/';
+
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error('Ошибка получения города');
+        }
+
+        const cityData = await response.text();
+        console.log('CityData : ', cityData);
+
+        return {succes: true, cityData };
+    } catch (error) {
+        console.error(error);
+        return { succes: false, error };
     }
 }
